@@ -1,0 +1,201 @@
+{
+  "created_utc": "2026-10-26T23:44:33.287801+00:00",
+  "status": "completed",
+  "targets": [
+    "potential",
+    "capacity"
+  ],
+  "horizon_hours": 1,
+  "context_hours": 256,
+  "heldout_series_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "target_bin_indices": [
+    512,
+    640,
+    768,
+    896
+  ],
+  "cases": 64,
+  "example_case": {
+    "series_index": 0,
+    "target_bin_index": 512
+  },
+  "training_series_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "training_origin_stride": 2,
+  "training_origins_start": 256,
+  "training_cases": 12032,
+  "training_corpus_sha256": "f1cf676eb6b8ae9c454fe2750237572a53f5e466b46fb28b2c5db766abc200e0",
+  "heldout_corpus_sha256": "7ec88a18ff64c2f62e985de4c331b1319a5732bdc432dc17ba655b2b8cd95bdd",
+  "pressure_benchmark_sha256": "6923343f5c344c452af16809834983b9fbcddf0210c61f6148f9f806b24021e8",
+  "decision_layer_sha256": "2bde89c3c820fb7538c2a7ad4df7eff83e3e388a6f65ed9ddd93aa7eb751121b",
+  "model_snapshot": "<LOCAL_HOME>/.cache/huggingface/hub/models--amazon--chronos-2/snapshots/29ec3766d36d6f73f0696f85560a422f50e8498c",
+  "model_weight_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+  "chronos_adaptation": "ZERO-SHOT. Original model; NO fare LoRA checkpoint loaded.",
+  "chronos_device": "cpu",
+  "dtype": "float32",
+  "cpu_threads": 4,
+  "cross_learning": false,
+  "calendar_covariates": [
+    "hour_sin",
+    "hour_cos",
+    "dow_sin",
+    "dow_cos",
+    "weekend"
+  ],
+  "lags": [
+    1,
+    2,
+    3,
+    6,
+    24,
+    48,
+    168
+  ],
+  "rolling_means": [
+    6,
+    24,
+    168
+  ],
+  "rolling_std": [
+    24
+  ],
+  "ridge_alpha": 10.0,
+  "hgb": {
+    "max_iter": 120,
+    "max_leaf_nodes": 31,
+    "learning_rate": 0.07,
+    "l2_regularization": 1.0,
+    "early_stopping": false
+  },
+  "price_grid": [
+    1.0,
+    1.1,
+    1.2,
+    1.3,
+    1.4,
+    1.5,
+    1.6,
+    1.7000000000000002,
+    1.8,
+    1.9,
+    2.0
+  ],
+  "eta_constraint_minutes": 10.0,
+  "decision_model": {
+    "base_fare_anchor": 10.92,
+    "base_eta_minutes": 5.0,
+    "congestion_gain_minutes": 8.0,
+    "load_threshold": 0.6,
+    "max_eta_minutes": 120.0,
+    "alpha": [
+      0.55,
+      1.3,
+      2.5
+    ],
+    "beta": [
+      0.04,
+      0.11,
+      0.22
+    ],
+    "intercept": [
+      1.8,
+      1.8,
+      1.8
+    ],
+    "weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "tolerance_minutes": 1e-09,
+    "max_iterations": 100
+  },
+  "seed": 20261026,
+  "timing": "History [:t]; current queue = queue_end[t-1]; forecast state in next hourly bin t.",
+  "no_selection_on_heldout": true,
+  "limitations": [
+    "Synthetic heldout worlds; not observed Uber arrivals/capacity.",
+    "Classical models are trained on synthetic domain data; Chronos uses zero domain adaptation.",
+    "Conditional responses use the same NEW illustrative structural calculator on predicted and realized inputs, not observed outcomes from the original simulator.",
+    "Multi-target point forecasts do not supply an identified or calibrated joint predictive distribution.",
+    "ETA is a quote proxy. Price is an action, not a forecasting target. No Uber One labels or causal policy claim.",
+    "One-step best feasible grid action is not a globally optimal pricing policy."
+  ],
+  "total_seconds": 16.55983387492597,
+  "timings": {
+    "Persistence": {
+      "training_seconds": 0.0,
+      "inference_seconds": 3.3916905522346497e-05
+    },
+    "Seasonal 24h": {
+      "training_seconds": 0.0,
+      "inference_seconds": 2.6041176170110703e-05
+    },
+    "Ridge (domain-trained)": {
+      "training_seconds": 0.01867975015193224,
+      "inference_seconds": 0.0006691250018775463
+    },
+    "HGB (domain-trained)": {
+      "training_seconds": 0.9217157079838216,
+      "inference_seconds": 0.004390249960124493
+    },
+    "Chronos-2 ZERO-SHOT": {
+      "training_seconds": 0.0,
+      "model_load_seconds": 0.1056527909822762,
+      "inference_seconds": 4.377587958006188
+    }
+  },
+  "python": "3.14.6",
+  "packages": {
+    "torch": "2.13.0"
+  }
+}

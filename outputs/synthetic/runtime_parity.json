@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "training_torch": "2.10.0",
+  "inference_torch": "2.13.0",
+  "checks": {
+    "30": {
+      "passed": true,
+      "max_absolute_difference": 0.0
+    },
+    "60": {
+      "passed": true,
+      "max_absolute_difference": 0.0
+    }
+  },
+  "scope": "Fixed synthetic case, first256hours; does not establish every floating-point operation is identical"
+}

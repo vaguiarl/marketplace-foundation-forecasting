@@ -1,0 +1,452 @@
+{
+  "protocol": {
+    "title": "NYC Uber rider fare forecasting",
+    "version": "1.1-synthetic-extension-before-test-scoring",
+    "frozen_before_test_scoring": true,
+    "train_start": "2026-01-01 05:00:00",
+    "train_end": "2026-02-15 05:00:00",
+    "validation_end": "2026-03-01 05:00:00",
+    "test_end": "2026-03-29 04:00:00",
+    "timestamp_convention": "UTC-naive storage; America/New_York calendar features and display",
+    "origin_stride_hours": 6,
+    "horizons": [
+      1,
+      3,
+      6
+    ],
+    "horizon_definition": "h=1 predicts pickup bin starting at origin; h=3 at origin+2h; h=6 at origin+5h",
+    "context_hours": 672,
+    "embargo_hours": 3,
+    "history_rule": "Only pickup bins strictly earlier than origin minus 3 hours; last available bin starts at origin minus 4 hours. Eligible trips last at most 3 hours.",
+    "target": "Median base_passenger_fare in USD for completed nonshared Uber trips within a fixed origin-destination zone pair; not an isolated surge component or binding upfront quote",
+    "min_trips_per_target_bin": 10,
+    "route_selection": "Six routes selected using January data only, before validation/test processing",
+    "high_fare_threshold": "Route-specific 90th percentile of valid TRAIN hourly median fares, fixed before validation/test scoring",
+    "chronos_model": "amazon/chronos-2",
+    "chronos_revision": "29ec3766d36d6f73f0696f85560a422f50e8498c",
+    "chronos_weights_sha256": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+    "original_weight_commit": "95a9710e2596287d08352589f42634fa5abdf0a7",
+    "original_weights_published": "2025-10-30T14:58:57Z",
+    "model_provenance_url": "https://huggingface.co/api/models/amazon/chronos-2/revision/95a9710e2596287d08352589f42634fa5abdf0a7?blobs=true",
+    "chronos_modes": [
+      "Chronos-2",
+      "Chronos-2 + calendar/count"
+    ],
+    "chronos_cross_learning": false,
+    "synthetic_extension": {
+      "added_before_first_nyc_test_scoring": true,
+      "purpose": "Test observable forecasting transfer from an explicitly stylized price/ETA/queue simulator; separate from illustrative policy scenarios",
+      "paper": "Buchholz, Doval, Kastl, Matejka and Salz (2025), Personalized Pricing and the Value of Time, Econometrica 93(3):929-958, DOI 10.3982/ECTA18838",
+      "not_a_replication": true,
+      "gradient_data": "Synthetic episodes only; real train-only data may calibrate observable fare/count scales, not identify structural preferences or supply",
+      "real_calibration_cutoff_exclusive": "2026-02-15 02:00:00",
+      "lora_steps": [
+        30,
+        60
+      ],
+      "rank": 8,
+      "alpha": 16,
+      "learning_rate": 1e-05,
+      "context_hours_training": 256,
+      "prediction_length_training": 9,
+      "device": "cpu",
+      "dtype": "float32",
+      "threads": 4,
+      "selection": "Choose step30 or step60 solely by February MAE. Evaluate that candidate beside both frozen original variants in March; preserve zero-shot if adaptation fails. No test-driven reruns.",
+      "additional_receipts": [
+        "synthetic_protocol.json",
+        "outputs/synthetic/fine_tuning_manifest.json"
+      ]
+    },
+    "chronos_covariates": "Known-future NYC hour/day sine/cosine and weekend; past-only completed-trip count. Same calendar/count information available to learned baselines.",
+    "benchmark_selection": "Baseline hyperparameters and named baseline/Chronos comparison selected by validation MAE only. Selected learned baselines refit once on train+validation before test. No test tuning.",
+    "intervals": "Chronos native 10th/90th quantiles; baseline intervals use frozen validation residual 10th/90th percentiles by model and horizon. Empirical coverage is reported, not guaranteed.",
+    "bootstrap": "2000 paired daily-block bootstrap draws with seed 20261026; descriptive uncertainty for this one city/month, not deployment generalization",
+    "limitations": [
+      "Historical pseudo-online replay assumes an internal completed-trip feed; public TLC files arrive monthly with publication delay and cannot run this live.",
+      "Completed-trip selection excludes abandoned quotes and unmet demand. Volume is served trips, not unconstrained demand.",
+      "No Uber One membership, trip-product tier, explicit surge, competitor prices, or rider-level treatment information.",
+      "Fare changes can reflect route/product/rider mix, duration, and pricing. Fixed OD and filters do not eliminate composition changes.",
+      "Predictive performance does not identify price elasticities, causal subscription effects, optimal surge, or improvement over Uber production models.",
+      "No economic fine-tuned research weights are reused. Original public Chronos-2 weights only."
+    ]
+  },
+  "protocol_sha256": "530b895d24796952d8624d2f210fe476fecb968f3cb741f2dcdc74d7810b9692",
+  "panel_sha256": "e6cd1350dc10bec32d0f9bcebe9a8c1d8e43a563e2a7e90d1588f7335f678fe1",
+  "started_utc": "2026-10-26T23:33:34.063668+00:00",
+  "hardware": "macOS-26.6.1-arm64-arm-64bit-Mach-O",
+  "runtime": {
+    "chronos-forecasting": "2.3.1",
+    "torch": "2.13.0",
+    "numpy": "2.5.1",
+    "pandas": "2.3.3",
+    "pyarrow": "25.0.0",
+    "scikit-learn": "1.9.0",
+    "matplotlib": "3.11.1"
+  },
+  "source_hashes": {
+    "check_runtime_parity.py": "946d718149abb6b7c33acdfb04b08bc169af91a96bd71e6405da02222b29a806",
+    "baselines.py": "8262566796b7c3040550c312ad340e85fe4306efd287a5f175c1a1ff34243d4c",
+    "benchmark.py": "5f039a85e7e341a1dca6c76acf4b6284a645a029558bd0e3cb0f6a6940332059",
+    "fine_tune.py": "ff79ea06b352966fdf457324111cca96c6894f8ee467f09c54010b5137c04e4b",
+    "prepare_data.py": "b91badc835b04188296a27d6067794a20118ec87ca3b9c35a26d50f6049f22a4",
+    "audit_simulator.py": "427dc833431d702242d2c3a176ec081e419c31c133b097eb5d7d2cfe0ca630dd",
+    "audit_results.py": "04e3564c7646b4c1af83f3ccdee7fb49d47f86960658b79fd1b9ff111deee051",
+    "simulator.py": "eebafa01aa6a06793387a2d795acdb186ffb4adf97ca29eb3b496769ce556538",
+    "report.py": "fab78c684c18123cf1725ada58e8a57256081bc5a09ee190815b7f07909837c0"
+  },
+  "timings": {
+    "baseline_fit_and_validation_seconds": 10.50683854194358,
+    "baseline_test_prediction_seconds": 0.09776966599747539,
+    "baseline_test_by_model_seconds": {
+      "Ridge": 0.005864417180418968,
+      "Gradient boosting": 0.020256832940503955
+    },
+    "chronos_load_seconds": 0.09563104202970862,
+    "Chronos-2/validation": {
+      "inference_seconds": 5.2938250850420445,
+      "route_origins": 336,
+      "amortized_ms_per_route_origin": 15.75543180072037,
+      "batch_size": 32,
+      "note": "Batched CPU timing, not production end-to-end latency"
+    },
+    "Chronos-2/test": {
+      "inference_seconds": 10.38197424984537,
+      "route_origins": 666,
+      "amortized_ms_per_route_origin": 15.58854992469275,
+      "batch_size": 32,
+      "note": "Batched CPU timing, not production end-to-end latency"
+    },
+    "Chronos-2 + calendar/count/validation": {
+      "inference_seconds": 37.940871375380084,
+      "route_origins": 336,
+      "amortized_ms_per_route_origin": 112.91926004577405,
+      "batch_size": 32,
+      "note": "Batched CPU timing, not production end-to-end latency"
+    },
+    "Chronos-2 + calendar/count/test": {
+      "inference_seconds": 85.04735603928566,
+      "route_origins": 666,
+      "amortized_ms_per_route_origin": 127.6987327917202,
+      "batch_size": 32,
+      "note": "Batched CPU timing, not production end-to-end latency"
+    },
+    "Chronos-2 + synthetic LoRA (30 steps)/validation": {
+      "inference_seconds": 49.78357450221665,
+      "route_origins": 336,
+      "amortized_ms_per_route_origin": 148.16540030421623,
+      "batch_size": 32,
+      "note": "Batched CPU timing, not production end-to-end latency"
+    },
+    "Chronos-2 + synthetic LoRA (60 steps)/validation": {
+      "inference_seconds": 45.67111237253994,
+      "route_origins": 336,
+      "amortized_ms_per_route_origin": 135.9259296801784,
+      "batch_size": 32,
+      "note": "Batched CPU timing, not production end-to-end latency"
+    },
+    "Chronos-2 + synthetic LoRA (30 steps)/test": {
+      "inference_seconds": 106.11095620575361,
+      "route_origins": 666,
+      "amortized_ms_per_route_origin": 159.3257600686991,
+      "batch_size": 32,
+      "note": "Batched CPU timing, not production end-to-end latency"
+    }
+  },
+  "train_high_fare_thresholds": {
+    "129_82": 13.4635,
+    "188_61": 16.481,
+    "36_37": 12.779999999999998,
+    "37_36": 13.379999999999999,
+    "7_223": 13.52,
+    "82_129": 13.44
+  },
+  "model_latency_seconds": {
+    "Ridge": {
+      "seconds_per_case": 8.805431201830282e-06,
+      "unit": "one route-origin producing all three scored horizons; batched CPU"
+    },
+    "Gradient boosting": {
+      "seconds_per_case": 3.0415665075831765e-05,
+      "unit": "one route-origin producing all three scored horizons; batched CPU"
+    },
+    "Chronos-2": {
+      "seconds_per_case": 0.015588549924692748,
+      "unit": "one route-origin producing all three scored horizons; batched CPU"
+    },
+    "Chronos-2 + calendar/count": {
+      "seconds_per_case": 0.1276987327917202,
+      "unit": "one route-origin producing all three scored horizons; batched CPU"
+    },
+    "Chronos-2 + synthetic LoRA (30 steps)": {
+      "seconds_per_case": 0.1593257600686991,
+      "unit": "one route-origin producing all three scored horizons; batched CPU"
+    }
+  },
+  "baselines": {
+    "train_end": "2026-02-15T05:00:00",
+    "training_label_cutoff_exclusive": "2026-02-15T02:00:00",
+    "validation_start": "2026-02-15T05:00:00",
+    "validation_end_exclusive": "2026-03-01T05:00:00",
+    "validation_label_cutoff_exclusive": "2026-03-01T02:00:00",
+    "training_rows": 12881,
+    "validation_cases": 1002,
+    "validation_observed_labels": 720,
+    "training_origin_stride_hours": 1,
+    "refit_origin_stride_hours": 1,
+    "validation_origin_stride_hours": 6,
+    "embargo_hours": 3,
+    "context_hours": 672,
+    "model_features": [
+      "fare_lag_0",
+      "count_lag_0",
+      "fare_lag_1",
+      "count_lag_1",
+      "fare_lag_2",
+      "count_lag_2",
+      "fare_lag_3",
+      "count_lag_3",
+      "fare_lag_6",
+      "count_lag_6",
+      "fare_lag_12",
+      "count_lag_12",
+      "fare_lag_24",
+      "count_lag_24",
+      "fare_lag_48",
+      "count_lag_48",
+      "fare_lag_168",
+      "count_lag_168",
+      "fare_mean_6",
+      "fare_std_6",
+      "fare_min_6",
+      "fare_max_6",
+      "fare_observations_6",
+      "count_mean_6",
+      "fare_mean_24",
+      "fare_std_24",
+      "fare_min_24",
+      "fare_max_24",
+      "fare_observations_24",
+      "count_mean_24",
+      "fare_mean_168",
+      "fare_std_168",
+      "fare_min_168",
+      "fare_max_168",
+      "fare_observations_168",
+      "count_mean_168",
+      "last_valid_fare",
+      "series_id",
+      "horizon",
+      "hour_sin",
+      "hour_cos",
+      "weekday_sin",
+      "weekday_cos",
+      "hour",
+      "weekday",
+      "weekend",
+      "elapsed_day",
+      "target_lag_24",
+      "target_lag_48",
+      "target_lag_168",
+      "target_lag_336",
+      "target_lag_504",
+      "target_lag_672"
+    ],
+    "target_transform": "log1p; point forecasts back-transformed with expm1",
+    "selection_metric": "pooled validation MAE in USD, equal route-origin-horizon weight",
+    "candidates": [
+      {
+        "model": "Ridge",
+        "parameters": {
+          "alpha": 1.0
+        },
+        "validation_mae_usd": 1.855407900393156,
+        "fit_seconds": 0.10855025006458163,
+        "validation_predict_seconds": 0.005168958101421595
+      },
+      {
+        "model": "Ridge",
+        "parameters": {
+          "alpha": 10.0
+        },
+        "validation_mae_usd": 1.8598634162743883,
+        "fit_seconds": 0.056725542061030865,
+        "validation_predict_seconds": 0.00500195799395442
+      },
+      {
+        "model": "Ridge",
+        "parameters": {
+          "alpha": 100.0
+        },
+        "validation_mae_usd": 1.8404743115765643,
+        "fit_seconds": 0.0650902499910444,
+        "validation_predict_seconds": 0.0042480421252548695
+      },
+      {
+        "model": "Gradient boosting",
+        "parameters": {
+          "max_leaf_nodes": 15,
+          "max_iter": 220,
+          "learning_rate": 0.06,
+          "l2_regularization": 1.0,
+          "min_samples_leaf": 25,
+          "loss": "squared_error",
+          "early_stopping": false,
+          "random_state": 42
+        },
+        "validation_mae_usd": 1.7008998673043854,
+        "fit_seconds": 0.9904900409746915,
+        "validation_predict_seconds": 0.007861166959628463
+      },
+      {
+        "model": "Gradient boosting",
+        "parameters": {
+          "max_leaf_nodes": 15,
+          "max_iter": 220,
+          "learning_rate": 0.06,
+          "l2_regularization": 1.0,
+          "min_samples_leaf": 25,
+          "loss": "absolute_error",
+          "early_stopping": false,
+          "random_state": 42
+        },
+        "validation_mae_usd": 1.4162002392032806,
+        "fit_seconds": 1.6255813329480588,
+        "validation_predict_seconds": 0.053232042118906975
+      },
+      {
+        "model": "Gradient boosting",
+        "parameters": {
+          "max_leaf_nodes": 31,
+          "max_iter": 220,
+          "learning_rate": 0.06,
+          "l2_regularization": 1.0,
+          "min_samples_leaf": 25,
+          "loss": "squared_error",
+          "early_stopping": false,
+          "random_state": 42
+        },
+        "validation_mae_usd": 1.5796236735686866,
+        "fit_seconds": 1.798953624907881,
+        "validation_predict_seconds": 0.015448708087205887
+      },
+      {
+        "model": "Gradient boosting",
+        "parameters": {
+          "max_leaf_nodes": 31,
+          "max_iter": 220,
+          "learning_rate": 0.06,
+          "l2_regularization": 1.0,
+          "min_samples_leaf": 25,
+          "loss": "absolute_error",
+          "early_stopping": false,
+          "random_state": 42
+        },
+        "validation_mae_usd": 1.4758073922753996,
+        "fit_seconds": 3.025724417064339,
+        "validation_predict_seconds": 0.01115708309225738
+      }
+    ],
+    "selected": {
+      "Ridge": {
+        "parameters": {
+          "alpha": 100.0
+        },
+        "validation_mae_usd": 1.8404743115765643,
+        "fit_seconds": 0.0650902499910444
+      },
+      "Gradient boosting": {
+        "parameters": {
+          "max_leaf_nodes": 15,
+          "max_iter": 220,
+          "learning_rate": 0.06,
+          "l2_regularization": 1.0,
+          "min_samples_leaf": 25,
+          "loss": "absolute_error",
+          "early_stopping": false,
+          "random_state": 42
+        },
+        "validation_mae_usd": 1.4162002392032806,
+        "fit_seconds": 1.6255813329480588
+      }
+    },
+    "refit_after_validation": true,
+    "refit": {
+      "Ridge": {
+        "fit_seconds": 0.07880749995820224,
+        "rows": 17237,
+        "label_cutoff_exclusive": "2026-03-01T02:00:00"
+      },
+      "Gradient boosting": {
+        "fit_seconds": 2.414684083079919,
+        "rows": 17237,
+        "label_cutoff_exclusive": "2026-03-01T02:00:00"
+      }
+    },
+    "timestamp_convention": "UTC-naive; calendar features converted to America/New_York",
+    "seasonal_lag_convention": "Fixed elapsed hours (24/168); NYC calendar covariates separately handle DST",
+    "fallbacks": "Seasonal missing references fall back to other seasonality, then last valid value within context."
+  },
+  "model_hash": "ddcda3c7508bf2528087723e98a20707cc04b7f370ae275a9fd88078ddba4f42",
+  "synthetic_adaptation": {
+    "candidates": [
+      {
+        "steps": 30,
+        "model": "Chronos-2 + synthetic LoRA (30 steps)",
+        "path": "outputs/synthetic/checkpoints/step30",
+        "validation_mae": 1.201982871055603,
+        "weight_files": {
+          "model.safetensors": "ce0b257d9dc5113680f498235e8d1b57d28f990152079295db1ac66e03623868"
+        }
+      },
+      {
+        "steps": 60,
+        "model": "Chronos-2 + synthetic LoRA (60 steps)",
+        "path": "outputs/synthetic/checkpoints/step60",
+        "validation_mae": 1.2021482938130696,
+        "weight_files": {
+          "model.safetensors": "06ca8664fc6c6973abbfa8975be7201ee44e18ba5a563fa9ba6ce97eab52fb90"
+        }
+      }
+    ],
+    "selected": {
+      "steps": 30,
+      "model": "Chronos-2 + synthetic LoRA (30 steps)",
+      "path": "outputs/synthetic/checkpoints/step30",
+      "validation_mae": 1.201982871055603,
+      "weight_files": {
+        "model.safetensors": "ce0b257d9dc5113680f498235e8d1b57d28f990152079295db1ac66e03623868"
+      }
+    },
+    "selected_is_diagnostic_synthetic_candidate_only": true,
+    "zero_step": {
+      "steps": 0,
+      "model": "Chronos-2 + calendar/count",
+      "path": "<LOCAL_HOME>/.cache/huggingface/hub/models--amazon--chronos-2/snapshots/29ec3766d36d6f73f0696f85560a422f50e8498c",
+      "validation_mae": 1.2018686032825046
+    },
+    "validation_recommendation": {
+      "steps": 0,
+      "model": "Chronos-2 + calendar/count",
+      "path": "<LOCAL_HOME>/.cache/huggingface/hub/models--amazon--chronos-2/snapshots/29ec3766d36d6f73f0696f85560a422f50e8498c",
+      "validation_mae": 1.2018686032825046
+    },
+    "selection": "Best synthetic candidate selected on February MAE; zero-step is retained if better. Best synthetic is still evaluated and reported diagnostically to expose negative transfer. No test selection and no real validation/test gradient updates."
+  },
+  "support": {
+    "validation": {
+      "candidate_route_origin_horizons": 1002,
+      "scored_route_origin_horizons": 720,
+      "excluded_route_origin_horizons": 282,
+      "model_count": 9
+    },
+    "test": {
+      "candidate_route_origin_horizons": 1998,
+      "scored_route_origin_horizons": 1574,
+      "excluded_route_origin_horizons": 424,
+      "model_count": 9
+    }
+  },
+  "baseline_point_outside_calibrated_interval_rows": 0,
+  "finished_utc": "2026-10-26T23:39:33.538181+00:00"
+}

@@ -1,0 +1,95 @@
+{
+  "label": "Illustrative model-dependent simulation; not a real-world policy effect or optimization result",
+  "parameters": {
+    "base_anchor": 17.357507115421466,
+    "base_count": 20.389477065163728,
+    "base_potential": 53.93491522150748,
+    "base_capacity": 26.311272799906014,
+    "base_eta": 3.181825763488907,
+    "alpha": [
+      0.43413983377004306,
+      1.0261486980019199,
+      1.9733628807729229
+    ],
+    "beta": [
+      0.046294838749474806,
+      0.1273108065610557,
+      0.2546216131221114
+    ],
+    "intercept": [
+      2.104406299348954,
+      1.5405769251885515,
+      1.9813765649989548
+    ],
+    "type_weights": [
+      0.46776965057500913,
+      0.11932070052970956,
+      0.41290964889528137
+    ],
+    "gain": 1.0004525622353757,
+    "smoothing": 0.18577542856126095,
+    "reaction_lag": 2,
+    "cap": 1.581065610328897,
+    "rho": 0.6597954598552889,
+    "shock_sd": 0.06757293410651652,
+    "capacity_adjustment": 0.3225890693467421,
+    "abandonment": 0.3907741880229279,
+    "matching_efficiency": 0.7731189118362786,
+    "eta_gain": 5.720143673312467,
+    "morning_amplitude": 0.5396359861189725,
+    "evening_amplitude": 0.5801093713274897,
+    "night_amplitude": 0.10607369788065199,
+    "capacity_phase": 2.692836866222816,
+    "observation_noise": 0.08460646815265992
+  },
+  "rows": [
+    {
+      "policy": "flat",
+      "potential_riders": 10048,
+      "requests": 3753,
+      "completed": 3189,
+      "abandoned_after_request": 559,
+      "ending_queue": 5,
+      "requested_over_potential": 0.37350716560509556,
+      "completed_over_potential": 0.3173765923566879,
+      "abandoned_over_requests": 0.14894750865973888,
+      "mean_quoted_eta_minutes_weighted_by_potential": 34.451469510832055,
+      "gross_rider_fare_revenue_usd_before_costs": 55353.090191079056,
+      "percent_potential_not_completed_by_window_end": 68.26234076433121
+    },
+    {
+      "policy": "reactive",
+      "potential_riders": 10048,
+      "requests": 3652,
+      "completed": 3172,
+      "abandoned_after_request": 476,
+      "ending_queue": 4,
+      "requested_over_potential": 0.36345541401273884,
+      "completed_over_potential": 0.3156847133757962,
+      "abandoned_over_requests": 0.1303395399780942,
+      "mean_quoted_eta_minutes_weighted_by_potential": 31.937140127442394,
+      "gross_rider_fare_revenue_usd_before_costs": 72671.1990692713,
+      "percent_potential_not_completed_by_window_end": 68.43152866242038
+    },
+    {
+      "policy": "anticipatory",
+      "potential_riders": 10048,
+      "requests": 3583,
+      "completed": 3152,
+      "abandoned_after_request": 428,
+      "ending_queue": 3,
+      "requested_over_potential": 0.35658837579617836,
+      "completed_over_potential": 0.31369426751592355,
+      "abandoned_over_requests": 0.11945297236952275,
+      "mean_quoted_eta_minutes_weighted_by_potential": 30.314808128073714,
+      "gross_rider_fare_revenue_usd_before_costs": 85298.1878818624,
+      "percent_potential_not_completed_by_window_end": 68.63057324840764
+    }
+  ],
+  "same_exogenous_capacity_and_potential_paths": true,
+  "same_choice_uniforms": true,
+  "anticipatory_policy": "Calendar plus lagged observed potential-arrival heuristic, not Chronos or an optimized policy; requires internal arrival information absent from TLC.",
+  "eta_is_model_generated_quote_not_realized_wait": true,
+  "revenue_is_not_profit": true,
+  "end_of_window_unserved_includes_pending_requests": true
+}

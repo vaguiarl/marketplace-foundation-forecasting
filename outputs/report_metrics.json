@@ -1,0 +1,115 @@
+{
+  "created_utc": "2026-10-26T23:43:32.135157+00:00",
+  "model_summary": [
+    {
+      "model": "Chronos-2 + synthetic LoRA (30 steps)",
+      "cases": 1574,
+      "mae": 1.0665020762616828,
+      "rmse": 1.5379315489817553,
+      "high_fare_mae": 2.551572690310178,
+      "high_fare_cases": 143,
+      "coverage_80": 0.7662007623888183,
+      "interval_width": 3.1625747268657367
+    },
+    {
+      "model": "Chronos-2 + calendar/count",
+      "cases": 1574,
+      "mae": 1.0667870679804452,
+      "rmse": 1.5382368466123801,
+      "high_fare_mae": 2.550145253268155,
+      "high_fare_cases": 143,
+      "coverage_80": 0.7655654383735705,
+      "interval_width": 3.1614831217968176
+    },
+    {
+      "model": "Chronos-2",
+      "cases": 1574,
+      "mae": 1.0908014809827793,
+      "rmse": 1.5603448906980126,
+      "high_fare_mae": 2.517285414475661,
+      "high_fare_cases": 143,
+      "coverage_80": 0.772554002541296,
+      "interval_width": 3.2214337667637283
+    },
+    {
+      "model": "Gradient boosting",
+      "cases": 1574,
+      "mae": 1.1770075344681823,
+      "rmse": 1.6396228505092778,
+      "high_fare_mae": 2.6218011059454267,
+      "high_fare_cases": 143,
+      "coverage_80": 0.849428208386277,
+      "interval_width": 3.8127899345046385
+    },
+    {
+      "model": "Ridge",
+      "cases": 1574,
+      "mae": 1.1942680599845354,
+      "rmse": 1.7416550803586763,
+      "high_fare_mae": 3.397998902331337,
+      "high_fare_cases": 143,
+      "coverage_80": 0.6480304955527318,
+      "interval_width": 4.236071566974974
+    },
+    {
+      "model": "Four-week seasonal",
+      "cases": 1574,
+      "mae": 1.310977075391783,
+      "rmse": 1.7997476479177321,
+      "high_fare_mae": 2.476765734265734,
+      "high_fare_cases": 143,
+      "coverage_80": 0.7890724269377383,
+      "interval_width": 4.001854034307497
+    },
+    {
+      "model": "Daily seasonal",
+      "cases": 1574,
+      "mae": 1.49824332909784,
+      "rmse": 2.156755988640396,
+      "high_fare_mae": 3.0059090909090913,
+      "high_fare_cases": 143,
+      "coverage_80": 0.829733163913596,
+      "interval_width": 4.993021918678527
+    },
+    {
+      "model": "Weekly seasonal",
+      "cases": 1574,
+      "mae": 1.529631512071156,
+      "rmse": 2.1543682759363274,
+      "high_fare_mae": 2.746083916083916,
+      "high_fare_cases": 143,
+      "coverage_80": 0.820838627700127,
+      "interval_width": 5.227786531130877
+    },
+    {
+      "model": "Persistence",
+      "cases": 1574,
+      "mae": 2.0074015247776362,
+      "rmse": 2.7638494622651817,
+      "high_fare_mae": 4.215979020979021,
+      "high_fare_cases": 143,
+      "coverage_80": 0.8113087674714105,
+      "interval_width": 6.351772236340534
+    }
+  ],
+  "validation_selected_baseline": "Four-week seasonal",
+  "validation_selected_chronos": "Chronos-2 + calendar/count",
+  "paired_comparison": {
+    "model": "Chronos-2 + calendar/count",
+    "baseline": "Four-week seasonal",
+    "mae_difference_usd": -0.24419000741133792,
+    "day_block_95pct_lower": -0.29863093503271,
+    "day_block_95pct_upper": -0.1870205959814527,
+    "blocks": 28,
+    "bootstrap_draws": 2000,
+    "interpretation": "Negative difference favors the named model. Descriptive short-window day-block bootstrap; not a generalization guarantee."
+  },
+  "example": {
+    "series_id": "37_36",
+    "label": "Bushwick South \u2192 Bushwick North",
+    "horizon": 3,
+    "selection": "First route in January-only ranking, first seven test days, horizon three where available. Not selected for favorable model performance."
+  },
+  "unique_test_cases": 1574,
+  "test_winner_descriptive": "Chronos-2 + synthetic LoRA (30 steps)"
+}

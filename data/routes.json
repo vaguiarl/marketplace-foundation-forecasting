@@ -1,0 +1,80 @@
+[
+  {
+    "PULocationID":37,
+    "DOLocationID":36,
+    "train_trips":17321,
+    "train_observed_hours":740,
+    "train_valid_hours":614,
+    "train_15plus_hours":529,
+    "train_coverage":0.8252688172,
+    "train_mean_hourly_count":23.2809139785,
+    "series_id":"37_36",
+    "origin":"Bushwick South",
+    "destination":"Bushwick North"
+  },
+  {
+    "PULocationID":36,
+    "DOLocationID":37,
+    "train_trips":17930,
+    "train_observed_hours":740,
+    "train_valid_hours":605,
+    "train_15plus_hours":469,
+    "train_coverage":0.813172043,
+    "train_mean_hourly_count":24.0994623656,
+    "series_id":"36_37",
+    "origin":"Bushwick North",
+    "destination":"Bushwick South"
+  },
+  {
+    "PULocationID":129,
+    "DOLocationID":82,
+    "train_trips":12078,
+    "train_observed_hours":740,
+    "train_valid_hours":580,
+    "train_15plus_hours":419,
+    "train_coverage":0.7795698925,
+    "train_mean_hourly_count":16.2338709677,
+    "series_id":"129_82",
+    "origin":"Jackson Heights",
+    "destination":"Elmhurst"
+  },
+  {
+    "PULocationID":82,
+    "DOLocationID":129,
+    "train_trips":12132,
+    "train_observed_hours":740,
+    "train_valid_hours":575,
+    "train_15plus_hours":410,
+    "train_coverage":0.7728494624,
+    "train_mean_hourly_count":16.3064516129,
+    "series_id":"82_129",
+    "origin":"Elmhurst",
+    "destination":"Jackson Heights"
+  },
+  {
+    "PULocationID":7,
+    "DOLocationID":223,
+    "train_trips":13374,
+    "train_observed_hours":739,
+    "train_valid_hours":566,
+    "train_15plus_hours":424,
+    "train_coverage":0.7607526882,
+    "train_mean_hourly_count":17.9758064516,
+    "series_id":"7_223",
+    "origin":"Astoria",
+    "destination":"Steinway"
+  },
+  {
+    "PULocationID":188,
+    "DOLocationID":61,
+    "train_trips":11514,
+    "train_observed_hours":735,
+    "train_valid_hours":532,
+    "train_15plus_hours":412,
+    "train_coverage":0.7150537634,
+    "train_mean_hourly_count":15.4758064516,
+    "series_id":"188_61",
+    "origin":"Prospect-Lefferts Gardens",
+    "destination":"Crown Heights North"
+  }
+]

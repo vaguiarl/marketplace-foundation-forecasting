@@ -1,0 +1,68 @@
+{
+  "created_utc": "2026-10-26T23:48:06.323497+00:00",
+  "inputs": {
+    "quarterly_mobility_gross_bookings_usd": 28988000000.0,
+    "eligible_share": 0.2,
+    "baseline_quote_to_completed_conversion": 0.6,
+    "incremental_contribution_rate": 0.1,
+    "annual_all_in_program_cost_usd": 1000000.0,
+    "average_fare_change_relative": 0.0,
+    "price_retention_factor": 1.0,
+    "extra_subsidy_usd": 0.0
+  },
+  "verified_fact": {
+    "quarter": "Q2 2026",
+    "metric": "Mobility Gross Bookings",
+    "usd": 28988000000,
+    "source": "https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Announces-Results-for-Second-Quarter-2026/default.aspx",
+    "source_publication_date": "2026-08-05"
+  },
+  "annualization": "4 \u00d7 one reported quarter is a scale reference, not a revenue estimate, forecast, guidance or estimate of annual seasonality.",
+  "assumed_not_disclosed_by_uber": [
+    "Eligible share20%",
+    "Baseline quote-to-completed conversion60%",
+    "10% contribution rate on incremental VOLUME at baseline fare",
+    "Annual all-in program cost$1m",
+    "No average gross fare change or extra subsidy in the main scenario",
+    "Price retention factor1 in sensitivity only, holding driver payments and other costs fixed; actual taxes/processing may reduce it",
+    "Net causal conversion lifts listed in scenarios",
+    "$0.20 per four-thread worker-hour"
+  ],
+  "causal_lift_definition": "Absolute percentage-point increase in completed rides per eligible quote, versus Uber's CURRENT production stack, AFTER netting cannibalization, time-shifting and displaced trips. Not observed in this demo.",
+  "unit_economics": "m is assumed contribution on incremental VOLUME at baseline fare, not a revenue take rate, EBITDA/operating margin or profit rate. Price changes have a separate retention factor k. k=1 is illustrative fixed driver payments and other costs, not an Uber estimate; taxes/processing and other pass-through costs may reduce k.",
+  "gross_fare_vs_coupon": "Uber defines Gross Bookings without adjusting for consumer discounts/refunds. fare_change here means gross fare per completed trip, NOT coupons. Extra platform-funded coupons/subsidies must be entered separately as extra_subsidy_usd and do not mechanically reduce reported Gross Bookings.",
+  "cost_accounting": "All-in annual program cost includes science, engineering, serving/model compute, monitoring, rollout and already-budgeted incentives. Do not add the compute illustration again. extra_subsidy_usd counts only additional coupon/subsidy costs NOT already in program cost. Do not double-count any incentive.",
+  "equations": {
+    "eligible_G": "4 * quarterly_Mobility_Gross_Bookings * eligible_share",
+    "relative_volume_r": "delta_conversion_fraction/baseline_conversion",
+    "delta_GB": "eligible_G * ((1 + r) * (1 + gross_fare_change_p) - 1)",
+    "incremental_contribution": "G*m*r + G*(1+r)*p*k - extra_subsidy",
+    "net_contribution": "incremental_contribution - annual_all_in_program_cost",
+    "break_even_delta_conversion": "baseline_conversion * (cost+extra_subsidy-G*p*k)/(G*(m+p*k)); requires positive denominator and feasible resulting conversion"
+  },
+  "model_evidence": {
+    "chronos_zero_shot_calendar_count_mae_usd": 1.0667870679804452,
+    "gradient_boosting_mae_usd": 1.1770075344681823,
+    "relative_mae_reduction": 0.09364465669078237,
+    "test_cases": 1574,
+    "nominal_80pct_interval_empirical_coverage": 0.7655654383735705,
+    "high_fare_mae_usd": 2.550145253268155,
+    "four_week_seasonal_high_fare_mae_usd": 2.476765734265734,
+    "source": "../report_metrics.json",
+    "interpretation": "Small NYC observational forecasting benchmark, not Uber production comparison. Chronos has worse high-fare MAE than four-week seasonal and undercovers its nominal80% interval. No revenue conversion follows from the MAE reduction."
+  },
+  "compute_illustration": {
+    "forecast_units": 10000,
+    "cadence_minutes": 5.0,
+    "forecasts_per_day": 2880000.0,
+    "forecasts_per_year": 1051200000.0,
+    "measured_amortized_seconds_per_route_origin": 0.1276987327917202,
+    "worker_threads": 4,
+    "worker_hours_per_year": 37288.0299751823,
+    "average_equivalent_continuous_workers": 4.256624426390673,
+    "assumed_price_per_four_thread_worker_hour_usd": 0.2,
+    "illustrative_annual_model_compute_usd": 7457.60599503646,
+    "interpretation": "Optimistic extrapolation of local batched M1 CPU timing, not a cloud quote, production capacity plan, latency guarantee, or separate addition to the all-in program budget.",
+    "excluded": "Feature I/O, service overhead, peak-load headroom, tail latency, redundancy, online calibration and production integration. Target hardware must be benchmarked."
+  }
+}

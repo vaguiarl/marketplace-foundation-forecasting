@@ -1,0 +1,195 @@
+{
+  "created_utc": "2026-10-26T23:25:13.431659+00:00",
+  "official_landing_page": "https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page",
+  "official_data_dictionary": "https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_hvfhs.pdf",
+  "sources": [
+    {
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2026-01.parquet",
+      "path": "data/raw/fhvhv_tripdata_2026-01.parquet",
+      "bytes": 505868728,
+      "sha256": "d7cdc852912fd7864166448a93cb40d7d6b09f136057b10ae31e9bb53d59c6f2"
+    },
+    {
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2026-02.parquet",
+      "path": "data/raw/fhvhv_tripdata_2026-02.parquet",
+      "bytes": 476780037,
+      "sha256": "7f3c6737ed9a65884c9867ac2b8e05e358e56b42ecaf6d43f8009d40a9fce5c2"
+    },
+    {
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2026-03.parquet",
+      "path": "data/raw/fhvhv_tripdata_2026-03.parquet",
+      "bytes": 532615621,
+      "sha256": "0f63d67cb9253b5a818cc4a1b2ddaf3a79955a6bf31c7577c53ff97fa040a262"
+    },
+    {
+      "url": "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv",
+      "path": "data/raw/taxi_zone_lookup.csv",
+      "bytes": 12331,
+      "sha256": "1a99e105092230f8620f301edcca7f80d3080642ff404d28ed957d3fa222c8ed"
+    }
+  ],
+  "panel_sha256": "e6cd1350dc10bec32d0f9bcebe9a8c1d8e43a563e2a7e90d1588f7335f678fe1",
+  "panel_rows": 12954,
+  "route_selection_period": "2026-01-01 through 2026-01-31 NYC local time only",
+  "route_selection_rule": "All nonairport cross-zone NYC routes; Manhattan pool had fewer than six qualifying routes; >=60% hours with >=10 rides and >=15 rides/hour January mean",
+  "route_ranking": "descending January hours with at least 10 selected rides, then total rides; zone IDs break ties",
+  "routes": [
+    {
+      "PULocationID": 37,
+      "DOLocationID": 36,
+      "train_trips": 17321,
+      "train_observed_hours": 740,
+      "train_valid_hours": 614,
+      "train_15plus_hours": 529,
+      "train_coverage": 0.8252688172043011,
+      "train_mean_hourly_count": 23.280913978494624,
+      "series_id": "37_36",
+      "origin": "Bushwick South",
+      "destination": "Bushwick North"
+    },
+    {
+      "PULocationID": 36,
+      "DOLocationID": 37,
+      "train_trips": 17930,
+      "train_observed_hours": 740,
+      "train_valid_hours": 605,
+      "train_15plus_hours": 469,
+      "train_coverage": 0.8131720430107527,
+      "train_mean_hourly_count": 24.099462365591396,
+      "series_id": "36_37",
+      "origin": "Bushwick North",
+      "destination": "Bushwick South"
+    },
+    {
+      "PULocationID": 129,
+      "DOLocationID": 82,
+      "train_trips": 12078,
+      "train_observed_hours": 740,
+      "train_valid_hours": 580,
+      "train_15plus_hours": 419,
+      "train_coverage": 0.7795698924731183,
+      "train_mean_hourly_count": 16.233870967741936,
+      "series_id": "129_82",
+      "origin": "Jackson Heights",
+      "destination": "Elmhurst"
+    },
+    {
+      "PULocationID": 82,
+      "DOLocationID": 129,
+      "train_trips": 12132,
+      "train_observed_hours": 740,
+      "train_valid_hours": 575,
+      "train_15plus_hours": 410,
+      "train_coverage": 0.7728494623655914,
+      "train_mean_hourly_count": 16.306451612903224,
+      "series_id": "82_129",
+      "origin": "Elmhurst",
+      "destination": "Jackson Heights"
+    },
+    {
+      "PULocationID": 7,
+      "DOLocationID": 223,
+      "train_trips": 13374,
+      "train_observed_hours": 739,
+      "train_valid_hours": 566,
+      "train_15plus_hours": 424,
+      "train_coverage": 0.760752688172043,
+      "train_mean_hourly_count": 17.975806451612904,
+      "series_id": "7_223",
+      "origin": "Astoria",
+      "destination": "Steinway"
+    },
+    {
+      "PULocationID": 188,
+      "DOLocationID": 61,
+      "train_trips": 11514,
+      "train_observed_hours": 735,
+      "train_valid_hours": 532,
+      "train_15plus_hours": 412,
+      "train_coverage": 0.7150537634408602,
+      "train_mean_hourly_count": 15.475806451612904,
+      "series_id": "188_61",
+      "origin": "Prospect-Lefferts Gardens",
+      "destination": "Crown Heights North"
+    }
+  ],
+  "selection_pass_audit": {
+    "rows_read": 20940373,
+    "exclude_other_or_missing_provider": 5694742,
+    "exclude_missing_or_out_of_month_datetime": 0,
+    "exclude_invalid_dst_clock_time": 0,
+    "exclude_invalid_or_over_3h_duration": 1290,
+    "exclude_fare_outside_0_500": 59777,
+    "exclude_miles_outside_0_1_100": 6813,
+    "exclude_shared_or_unknown_flags": 408638,
+    "exclude_access_a_ride_or_unknown": 12875,
+    "exclude_unknown_zone": 593459,
+    "exclude_airport": 1034565,
+    "exclude_same_zone": 1293364,
+    "rows_retained": 11834850
+  },
+  "monthly_disjoint_exclusion_audits": {
+    "2026-01": {
+      "rows_read": 20940373,
+      "exclude_other_or_missing_provider": 5694742,
+      "exclude_missing_or_out_of_month_datetime": 0,
+      "exclude_invalid_dst_clock_time": 0,
+      "exclude_invalid_or_over_3h_duration": 1290,
+      "exclude_fare_outside_0_500": 59777,
+      "exclude_miles_outside_0_1_100": 6813,
+      "exclude_shared_or_unknown_flags": 408638,
+      "exclude_access_a_ride_or_unknown": 12875,
+      "exclude_unknown_zone": 593459,
+      "exclude_airport": 1034565,
+      "exclude_same_zone": 1293364,
+      "rows_retained": 11834850,
+      "selected_route_trips": 84349
+    },
+    "2026-02": {
+      "rows_read": 19875686,
+      "exclude_other_or_missing_provider": 5708725,
+      "exclude_missing_or_out_of_month_datetime": 0,
+      "exclude_invalid_dst_clock_time": 0,
+      "exclude_invalid_or_over_3h_duration": 603,
+      "exclude_fare_outside_0_500": 5048,
+      "exclude_miles_outside_0_1_100": 6044,
+      "exclude_shared_or_unknown_flags": 383800,
+      "exclude_access_a_ride_or_unknown": 12545,
+      "exclude_unknown_zone": 595146,
+      "exclude_airport": 983147,
+      "exclude_same_zone": 1200444,
+      "rows_retained": 10980184,
+      "selected_route_trips": 73396
+    },
+    "2026-03": {
+      "rows_read": 22058358,
+      "exclude_other_or_missing_provider": 6102183,
+      "exclude_missing_or_out_of_month_datetime": 0,
+      "exclude_invalid_dst_clock_time": 85,
+      "exclude_invalid_or_over_3h_duration": 1036,
+      "exclude_fare_outside_0_500": 8522,
+      "exclude_miles_outside_0_1_100": 6483,
+      "exclude_shared_or_unknown_flags": 329185,
+      "exclude_access_a_ride_or_unknown": 14748,
+      "exclude_unknown_zone": 690259,
+      "exclude_airport": 1166119,
+      "exclude_same_zone": 1300973,
+      "rows_retained": 12438765,
+      "selected_route_trips": 79296
+    }
+  },
+  "minimum_rides_per_target_hour": 10,
+  "target": "Median realized base_passenger_fare in USD on completed, nonshared, nonairport, cross-zone Uber trips with specified validity filters",
+  "time_convention": "UTC timezone-naive pickup hour, complete 2159-hour grid Jan1 05:00Z through Apr1 04:00Z (end exclusive). Source NYC local timestamps localized with ambiguous/nonexistent=NaT, invalid records dropped, then converted to UTC. Local_hour and local_dayofweek derive America/New_York calendar and respect DST.",
+  "availability": "Retrospective pseudo-online experiment: TLC public monthly releases are delayed approximately two months. To mimic an internal completed-trip stream, callers must embargo each hour until its end plus three hours, because retained rides can last up to three hours. No real-time public feed is claimed.",
+  "limitations": [
+    "No surge multiplier or no-surge counterfactual",
+    "No Uber One membership, discounts or product-tier identifier",
+    "Only completed trips; no quotes, declined requests, conversion or unconstrained demand",
+    "Composition within OD can change; this is observed rider fare, not causal surge",
+    "TLC does not guarantee accuracy or completeness",
+    "No driver compensation fields used",
+    "No deduplication attempted: absent trip IDs and identical values may be legitimate separate trips"
+  ],
+  "elapsed_seconds": 74.59360220795497
+}

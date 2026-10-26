@@ -1,0 +1,214 @@
+{
+  "default_scenarios": [
+    {
+      "conversion_lift_absolute_pp": -0.05,
+      "conversion_lift_fraction": -0.0005,
+      "conversion_after_fraction": 0.5995,
+      "additional_completions_per_10000_quotes": -5.0,
+      "average_fare_change_relative": 0.0,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": -19325333.33333378,
+      "incremental_volume_contribution_usd": -1932533.3333333335,
+      "gross_fare_change_contribution_usd": 0.0,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": -1932533.3333333335,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": -2932533.3333333335
+    },
+    {
+      "conversion_lift_absolute_pp": 0.0,
+      "conversion_lift_fraction": 0.0,
+      "conversion_after_fraction": 0.6,
+      "additional_completions_per_10000_quotes": 0.0,
+      "average_fare_change_relative": 0.0,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": 0.0,
+      "incremental_volume_contribution_usd": 0.0,
+      "gross_fare_change_contribution_usd": 0.0,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": 0.0,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": -1000000.0
+    },
+    {
+      "conversion_lift_absolute_pp": 0.01,
+      "conversion_lift_fraction": 0.0001,
+      "conversion_after_fraction": 0.6001,
+      "additional_completions_per_10000_quotes": 1.0,
+      "average_fare_change_relative": 0.0,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": 3865066.666666241,
+      "incremental_volume_contribution_usd": 386506.66666666674,
+      "gross_fare_change_contribution_usd": 0.0,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": 386506.66666666674,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": -613493.3333333333
+    },
+    {
+      "conversion_lift_absolute_pp": 0.05,
+      "conversion_lift_fraction": 0.0005,
+      "conversion_after_fraction": 0.6004999999999999,
+      "additional_completions_per_10000_quotes": 5.0,
+      "average_fare_change_relative": 0.0,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": 19325333.333331205,
+      "incremental_volume_contribution_usd": 1932533.3333333335,
+      "gross_fare_change_contribution_usd": 0.0,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": 1932533.3333333335,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": 932533.3333333335
+    },
+    {
+      "conversion_lift_absolute_pp": 0.1,
+      "conversion_lift_fraction": 0.001,
+      "conversion_after_fraction": 0.601,
+      "additional_completions_per_10000_quotes": 10.0,
+      "average_fare_change_relative": 0.0,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": 38650666.66666756,
+      "incremental_volume_contribution_usd": 3865066.666666667,
+      "gross_fare_change_contribution_usd": 0.0,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": 3865066.666666667,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": 2865066.666666667
+    },
+    {
+      "conversion_lift_absolute_pp": 0.5,
+      "conversion_lift_fraction": 0.005,
+      "conversion_after_fraction": 0.605,
+      "additional_completions_per_10000_quotes": 50.0,
+      "average_fare_change_relative": 0.0,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": 193253333.33333266,
+      "incremental_volume_contribution_usd": 19325333.333333332,
+      "gross_fare_change_contribution_usd": 0.0,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": 19325333.333333332,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": 18325333.333333332
+    }
+  ],
+  "fare_sensitivity_at_0_05pp": [
+    {
+      "conversion_lift_absolute_pp": 0.05,
+      "conversion_lift_fraction": 0.0005,
+      "conversion_after_fraction": 0.6004999999999999,
+      "additional_completions_per_10000_quotes": 5.0,
+      "average_fare_change_relative": -0.001,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": -3884392.0000022757,
+      "incremental_volume_contribution_usd": 1932533.3333333335,
+      "gross_fare_change_contribution_usd": -23209725.333333332,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": -21277192.0,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": -22277192.0
+    },
+    {
+      "conversion_lift_absolute_pp": 0.05,
+      "conversion_lift_fraction": 0.0005,
+      "conversion_after_fraction": 0.6004999999999999,
+      "additional_completions_per_10000_quotes": 5.0,
+      "average_fare_change_relative": -0.0001,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": 17004360.79999786,
+      "incremental_volume_contribution_usd": 1932533.3333333335,
+      "gross_fare_change_contribution_usd": -2320972.533333333,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": -388439.1999999997,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": -1388439.1999999997
+    },
+    {
+      "conversion_lift_absolute_pp": 0.05,
+      "conversion_lift_fraction": 0.0005,
+      "conversion_after_fraction": 0.6004999999999999,
+      "additional_completions_per_10000_quotes": 5.0,
+      "average_fare_change_relative": 0,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": 19325333.333331205,
+      "incremental_volume_contribution_usd": 1932533.3333333335,
+      "gross_fare_change_contribution_usd": 0.0,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": 1932533.3333333335,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": 932533.3333333335
+    },
+    {
+      "conversion_lift_absolute_pp": 0.05,
+      "conversion_lift_fraction": 0.0005,
+      "conversion_after_fraction": 0.6004999999999999,
+      "additional_completions_per_10000_quotes": 5.0,
+      "average_fare_change_relative": 0.0001,
+      "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+      "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+      "incremental_gross_bookings_usd": 21646305.86666455,
+      "incremental_volume_contribution_usd": 1932533.3333333335,
+      "gross_fare_change_contribution_usd": 2320972.533333333,
+      "extra_subsidy_usd": 0.0,
+      "incremental_contribution_before_program_cost_usd": 4253505.866666667,
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "net_incremental_contribution_after_program_cost_usd": 3253505.866666667
+    }
+  ],
+  "margin_break_even": [
+    {
+      "contribution_rate": 0.05,
+      "break_even_absolute_pp": 0.05174554988271008
+    },
+    {
+      "contribution_rate": 0.1,
+      "break_even_absolute_pp": 0.02587277494135504
+    },
+    {
+      "contribution_rate": 0.15,
+      "break_even_absolute_pp": 0.01724851662757003
+    }
+  ],
+  "program_cost_sensitivity": [
+    {
+      "annual_all_in_program_cost_usd": 500000.0,
+      "break_even_absolute_pp": 0.01293638747067752,
+      "net_at_plus_0_05pp_usd": 1432533.3333333335
+    },
+    {
+      "annual_all_in_program_cost_usd": 1000000.0,
+      "break_even_absolute_pp": 0.02587277494135504,
+      "net_at_plus_0_05pp_usd": 932533.3333333335
+    },
+    {
+      "annual_all_in_program_cost_usd": 2000000.0,
+      "break_even_absolute_pp": 0.05174554988271008,
+      "net_at_plus_0_05pp_usd": -67466.66666666651
+    }
+  ],
+  "extra_coupon_cost_example_100k": {
+    "conversion_lift_absolute_pp": 0.05,
+    "conversion_lift_fraction": 0.0005,
+    "conversion_after_fraction": 0.6004999999999999,
+    "additional_completions_per_10000_quotes": 5.0,
+    "average_fare_change_relative": 0.0,
+    "annualized_mobility_gross_bookings_scale_usd": 115952000000.0,
+    "eligible_annualized_gross_bookings_scale_usd": 23190400000.0,
+    "incremental_gross_bookings_usd": 19325333.333331205,
+    "incremental_volume_contribution_usd": 1932533.3333333335,
+    "gross_fare_change_contribution_usd": 0.0,
+    "extra_subsidy_usd": 100000.0,
+    "incremental_contribution_before_program_cost_usd": 1832533.3333333335,
+    "annual_all_in_program_cost_usd": 1000000.0,
+    "net_incremental_contribution_after_program_cost_usd": 832533.3333333335
+  },
+  "default_break_even_absolute_pp": 0.02587277494135504
+}

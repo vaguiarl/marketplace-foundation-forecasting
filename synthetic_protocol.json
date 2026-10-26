@@ -1,0 +1,55 @@
+{
+  "name": "Stylized rider price and waiting-time simulator",
+  "version": "1.0",
+  "reference": {
+    "authors": "Nicholas Buchholz, Laura Doval, Jakub Kastl, Filip Matejka, Tobias Salz",
+    "title": "Personalized Pricing and the Value of Time: Evidence From Auctioned Cab Rides",
+    "journal": "Econometrica 93(3), 2025, 929-958",
+    "doi": "10.3982/ECTA18838",
+    "url": "https://economics.mit.edu/sites/default/files/inline-files/ECTA18838.pdf",
+    "relationship": "Motivation for heterogeneous price and quoted waiting-time sensitivities only. This simulator is not a replication, does not use the paper's estimates, and does not claim to represent Liftago or Uber policy."
+  },
+  "real_data_use": "Only coarse median fare and completed-count scales from NYC panel rows timestamp < 2026-02-15 02:00 UTC. No validation or test outcomes, no real trajectories, and no estimated structural elasticities.",
+  "training_calibration_cutoff_utc_exclusive": "2026-02-15 02:00:00",
+  "default_seed": 20261026,
+  "episodes": 96,
+  "routes_per_episode": 2,
+  "hours_per_episode": 1008,
+  "separate_validation_episodes": 16,
+  "target": "Hourly median realized fare among completed synthetic rides; missing when fewer than 10 completions, matching the public-data target eligibility rule.",
+  "timing": [
+    "Start hour with last hour's queue, past observed potential arrivals, and current observable exogenous vehicle capacity.",
+    "Some pending requests abandon. Quote ETA from remaining queue and predictable demand; choose a rider price using only lagged requests or calendar plus lagged potential-arrival forecasts.",
+    "Realize new potential riders; heterogeneous riders accept/reject using quoted price and ETA plus pre-generated uniforms.",
+    "Serve FIFO up to exogenous capacity times matching efficiency. Earlier requests keep their original quoted prices.",
+    "Carry unmatched requests forward; use their locked fares for later completed-fare medians. Update demand state only for the next hour."
+  ],
+  "choice": "Three latent preference types. Logistic utility intercept - alpha*(price/base_anchor-1) - beta*(quoted_eta-base_eta). All alpha and beta strictly positive; prices are common across types, not personalized.",
+  "driver_side": "No driver payment control or pass-through assumption. Vehicle capacity follows exogenous seasonal availability, slow adjustment and shocks. Rider pricing does not automatically change driver capacity or pay.",
+  "controller": "Illustrative flat, reactive, and anticipatory price rules with randomized smoothing, lag, gain and caps. Anticipatory uses calendar, announced events and previous observed potential-arrival counts, never latent AR states or realized future innovations. It is not a Chronos policy; internal session-arrival data would be required and are absent in TLC. No policy is optimized or presumed superior.",
+  "heldout_policy_illustrations": "Four fixed independent seeds for low/high price sensitivity and short/persistent unannounced shocks. None is selected for a favorable result or used in forecasting-model training. Each world shares the exact exogenous path and choice uniforms across all three policies. Quoted ETA is a model proxy, not realized wait.",
+  "randomization": {
+    "base_fare_scale_multiplier": [0.55, 1.8],
+    "base_count_scale_multiplier": [0.65, 1.6],
+    "alpha_common_scale": [0.5, 1.8],
+    "beta_common_scale": [0.5, 1.7],
+    "controller_gain": [0.15, 1.9],
+    "controller_smoothing": [0.12, 0.85],
+    "reaction_lag_hours": [1, 4],
+    "rider_price_cap_multiplier": [1.25, 3.5],
+    "demand_ar_coefficient": [0.35, 0.95],
+    "demand_innovation_sd": [0.04, 0.30],
+    "event_duration_hours": [2, 12],
+    "event_factor": [1.3, 3.3],
+    "capacity_adjustment": [0.08, 0.40],
+    "queue_abandonment_fraction": [0.35, 0.90],
+    "matching_efficiency": [0.75, 0.98]
+  },
+  "reporting_limits": [
+    "Hourly queue approximation is for a forecasting demonstration, not minute-level dispatch optimization.",
+    "No causal inference about Uber, no Uber One membership mechanism, no competitor behavior, and no welfare or profit estimate.",
+    "Revenue means gross rider fares on completed rides before driver payments and operating costs.",
+    "Policy comparisons use the same exogenous paths and rider-choice uniforms. Differences are model-dependent, not empirical treatment effects.",
+    "A lower synthetic training loss is not evidence of improved real-world forecasting; real holdout evaluation remains necessary."
+  ]
+}

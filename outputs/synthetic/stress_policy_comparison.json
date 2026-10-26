@@ -1,0 +1,373 @@
+{
+  "label": "Four predeclared synthetic stress illustrations; never used to select a policy or train the forecasting model",
+  "anticipatory_policy": "Calendar plus lagged observed potential-arrival heuristic, not a Chronos policy or an optimal policy. Requires internal arrival information absent from TLC.",
+  "eta": "Model-generated quoted ETA proxy, not measured realized wait",
+  "worlds": [
+    {
+      "world": "low_price_sensitivity",
+      "seed": 23261127,
+      "parameters": {
+        "base_anchor": 12.170620846041787,
+        "base_count": 17.486406511200467,
+        "base_potential": 28.455854167853722,
+        "base_capacity": 25.911906866890874,
+        "base_eta": 3.8001081444815266,
+        "alpha": [
+          0.3,
+          0.65,
+          1.25
+        ],
+        "beta": [
+          0.04396252273179294,
+          0.12089693751243058,
+          0.24179387502486116
+        ],
+        "intercept": [
+          2.3574208614475265,
+          2.220590251045442,
+          1.1024325580811187
+        ],
+        "type_weights": [
+          0.3596868133488879,
+          0.5162772259380072,
+          0.12403596071310485
+        ],
+        "gain": 0.7115532551677619,
+        "smoothing": 0.7408669535935858,
+        "reaction_lag": 4,
+        "cap": 1.4375127268867323,
+        "rho": 0.7065195837002667,
+        "shock_sd": 0.14717490934144584,
+        "capacity_adjustment": 0.09884197402826007,
+        "abandonment": 0.7675318905954794,
+        "matching_efficiency": 0.8910490774370802,
+        "eta_gain": 7.074899804467753,
+        "morning_amplitude": 0.4201364227706192,
+        "evening_amplitude": 0.5624577432186599,
+        "night_amplitude": 0.4076457117908586,
+        "capacity_phase": 2.975675292154887,
+        "observation_noise": 0.028392609878972953
+      },
+      "rows": [
+        {
+          "policy": "flat",
+          "potential_riders": 4862,
+          "requests": 3946,
+          "completed": 3505,
+          "abandoned_after_request": 441,
+          "ending_queue": 0,
+          "requested_over_potential": 0.811600164541341,
+          "completed_over_potential": 0.720896750308515,
+          "abandoned_over_requests": 0.11175874303091739,
+          "mean_quoted_eta_minutes_weighted_by_potential": 8.103138914866706,
+          "gross_rider_fare_revenue_usd_before_costs": 42658.02606537647,
+          "percent_potential_not_completed_by_window_end": 27.910324969148505
+        },
+        {
+          "policy": "reactive",
+          "potential_riders": 4862,
+          "requests": 3910,
+          "completed": 3487,
+          "abandoned_after_request": 423,
+          "ending_queue": 0,
+          "requested_over_potential": 0.8041958041958042,
+          "completed_over_potential": 0.7171945701357466,
+          "abandoned_over_requests": 0.1081841432225064,
+          "mean_quoted_eta_minutes_weighted_by_potential": 8.051387262607317,
+          "gross_rider_fare_revenue_usd_before_costs": 46797.22360310704,
+          "percent_potential_not_completed_by_window_end": 28.28054298642534
+        },
+        {
+          "policy": "anticipatory",
+          "potential_riders": 4862,
+          "requests": 3885,
+          "completed": 3481,
+          "abandoned_after_request": 404,
+          "ending_queue": 0,
+          "requested_over_potential": 0.7990538872891814,
+          "completed_over_potential": 0.7159605100781571,
+          "abandoned_over_requests": 0.10398970398970399,
+          "mean_quoted_eta_minutes_weighted_by_potential": 7.9199891122569355,
+          "gross_rider_fare_revenue_usd_before_costs": 48586.06163299916,
+          "percent_potential_not_completed_by_window_end": 28.40394899218429
+        }
+      ]
+    },
+    {
+      "world": "high_price_sensitivity",
+      "seed": 23262136,
+      "parameters": {
+        "base_anchor": 9.474611161368536,
+        "base_count": 24.26227479063743,
+        "base_potential": 65.2564877479091,
+        "base_capacity": 39.58400529049327,
+        "base_eta": 7.533251714906794,
+        "alpha": [
+          1.1,
+          2.6,
+          5.0
+        ],
+        "beta": [
+          0.05333806822786974,
+          0.14667968762664177,
+          0.29335937525328354
+        ],
+        "intercept": [
+          1.5427703459590587,
+          1.6699123603413664,
+          1.6812320557950622
+        ],
+        "type_weights": [
+          0.6729873097220489,
+          0.22443686691354028,
+          0.10257582336441075
+        ],
+        "gain": 1.8366285357370833,
+        "smoothing": 0.261256484347529,
+        "reaction_lag": 3,
+        "cap": 2.5443942290152948,
+        "rho": 0.47175604035852514,
+        "shock_sd": 0.10244998314992224,
+        "capacity_adjustment": 0.2920394064300911,
+        "abandonment": 0.5036702715124592,
+        "matching_efficiency": 0.9137803788618757,
+        "eta_gain": 5.286977338322421,
+        "morning_amplitude": 0.2835891284577931,
+        "evening_amplitude": 0.5170791676637186,
+        "night_amplitude": 0.2552549403766206,
+        "capacity_phase": 1.3485833679834232,
+        "observation_noise": 0.10288785213305997
+      },
+      "rows": [
+        {
+          "policy": "flat",
+          "potential_riders": 11868,
+          "requests": 7404,
+          "completed": 6412,
+          "abandoned_after_request": 977,
+          "ending_queue": 15,
+          "requested_over_potential": 0.6238624873609707,
+          "completed_over_potential": 0.5402763734411864,
+          "abandoned_over_requests": 0.13195569962182604,
+          "mean_quoted_eta_minutes_weighted_by_potential": 19.62564666434955,
+          "gross_rider_fare_revenue_usd_before_costs": 60751.206766695046,
+          "percent_potential_not_completed_by_window_end": 45.97236265588136
+        },
+        {
+          "policy": "reactive",
+          "potential_riders": 11868,
+          "requests": 6766,
+          "completed": 6217,
+          "abandoned_after_request": 544,
+          "ending_queue": 5,
+          "requested_over_potential": 0.5701044826423998,
+          "completed_over_potential": 0.5238456353218739,
+          "abandoned_over_requests": 0.08040201005025126,
+          "mean_quoted_eta_minutes_weighted_by_potential": 15.477643686769719,
+          "gross_rider_fare_revenue_usd_before_costs": 79409.59132331121,
+          "percent_potential_not_completed_by_window_end": 47.615436467812614
+        },
+        {
+          "policy": "anticipatory",
+          "potential_riders": 11868,
+          "requests": 5413,
+          "completed": 5279,
+          "abandoned_after_request": 134,
+          "ending_queue": 0,
+          "requested_over_potential": 0.45610043815301654,
+          "completed_over_potential": 0.4448095719582069,
+          "abandoned_over_requests": 0.024755218917421024,
+          "mean_quoted_eta_minutes_weighted_by_potential": 11.542862427620934,
+          "gross_rider_fare_revenue_usd_before_costs": 93823.78866195654,
+          "percent_potential_not_completed_by_window_end": 55.51904280417931
+        }
+      ]
+    },
+    {
+      "world": "short_unannounced_shocks",
+      "seed": 23263145,
+      "parameters": {
+        "base_anchor": 18.525097113994452,
+        "base_count": 12.185521594625722,
+        "base_potential": 20.423864191151686,
+        "base_capacity": 18.438379612986783,
+        "base_eta": 5.233575554132453,
+        "alpha": [
+          0.977351740555446,
+          2.3101041140401453,
+          4.442507911615664
+        ],
+        "beta": [
+          0.043935460879025924,
+          0.12082251741732129,
+          0.24164503483464259
+        ],
+        "intercept": [
+          1.7693751178263317,
+          1.8338174439347805,
+          1.390313057022625
+        ],
+        "type_weights": [
+          0.6620999484090075,
+          0.12100547017236174,
+          0.21689458141863088
+        ],
+        "gain": 1.8454765148038044,
+        "smoothing": 0.3509596812438895,
+        "reaction_lag": 3,
+        "cap": 1.880539555434847,
+        "rho": 0.4,
+        "shock_sd": 0.2914389537449889,
+        "capacity_adjustment": 0.30037121231255987,
+        "abandonment": 0.5048381874168579,
+        "matching_efficiency": 0.8054315832661488,
+        "eta_gain": 5.709134392906514,
+        "morning_amplitude": 0.1953529456589187,
+        "evening_amplitude": 0.6119167731735058,
+        "night_amplitude": 0.6593456944463169,
+        "capacity_phase": 2.171037259703328,
+        "observation_noise": 0.06408907183094174,
+        "event_duration_low": 2,
+        "event_duration_high": 5,
+        "announced_probability": 0.0
+      },
+      "rows": [
+        {
+          "policy": "flat",
+          "potential_riders": 3698,
+          "requests": 2526,
+          "completed": 2204,
+          "abandoned_after_request": 320,
+          "ending_queue": 2,
+          "requested_over_potential": 0.683071930773391,
+          "completed_over_potential": 0.5959978366684694,
+          "abandoned_over_requests": 0.12668250197941408,
+          "mean_quoted_eta_minutes_weighted_by_potential": 16.837466871533017,
+          "gross_rider_fare_revenue_usd_before_costs": 40829.31403924377,
+          "percent_potential_not_completed_by_window_end": 40.40021633315306
+        },
+        {
+          "policy": "reactive",
+          "potential_riders": 3698,
+          "requests": 2334,
+          "completed": 2100,
+          "abandoned_after_request": 234,
+          "ending_queue": 0,
+          "requested_over_potential": 0.6311519740400217,
+          "completed_over_potential": 0.5678745267712277,
+          "abandoned_over_requests": 0.10025706940874037,
+          "mean_quoted_eta_minutes_weighted_by_potential": 14.025712375089498,
+          "gross_rider_fare_revenue_usd_before_costs": 49116.10407552695,
+          "percent_potential_not_completed_by_window_end": 43.21254732287723
+        },
+        {
+          "policy": "anticipatory",
+          "potential_riders": 3698,
+          "requests": 2268,
+          "completed": 2074,
+          "abandoned_after_request": 194,
+          "ending_queue": 0,
+          "requested_over_potential": 0.6133044889129259,
+          "completed_over_potential": 0.5608436992969172,
+          "abandoned_over_requests": 0.0855379188712522,
+          "mean_quoted_eta_minutes_weighted_by_potential": 12.649674710262406,
+          "gross_rider_fare_revenue_usd_before_costs": 53045.440691290256,
+          "percent_potential_not_completed_by_window_end": 43.915630070308275
+        }
+      ]
+    },
+    {
+      "world": "persistent_unannounced_shocks",
+      "seed": 23264154,
+      "parameters": {
+        "base_anchor": 16.43325512641049,
+        "base_count": 24.595967102849833,
+        "base_potential": 47.23650075979777,
+        "base_capacity": 38.1672228632445,
+        "base_eta": 6.087619753502583,
+        "alpha": [
+          0.6591446013562774,
+          1.557978148660292,
+          2.996111824346715
+        ],
+        "beta": [
+          0.036625263908454435,
+          0.1007194757482497,
+          0.2014389514964994
+        ],
+        "intercept": [
+          1.335569097866009,
+          1.5414746962753172,
+          2.3937569885335925
+        ],
+        "type_weights": [
+          0.5927118743733985,
+          0.0996470095921723,
+          0.3076411160344293
+        ],
+        "gain": 1.6048356188847872,
+        "smoothing": 0.7613970142034611,
+        "reaction_lag": 3,
+        "cap": 1.3012643821219885,
+        "rho": 0.95,
+        "shock_sd": 0.25829431279043413,
+        "capacity_adjustment": 0.281490066381491,
+        "abandonment": 0.6744991729011828,
+        "matching_efficiency": 0.841876305299404,
+        "eta_gain": 3.859625518957113,
+        "morning_amplitude": 0.20710588254130494,
+        "evening_amplitude": 0.749138315430262,
+        "night_amplitude": 0.3256123824889793,
+        "capacity_phase": 0.43043082908805996,
+        "observation_noise": 0.13919167752783704,
+        "event_duration_low": 8,
+        "event_duration_high": 13,
+        "announced_probability": 0.0
+      },
+      "rows": [
+        {
+          "policy": "flat",
+          "potential_riders": 11615,
+          "requests": 6055,
+          "completed": 4496,
+          "abandoned_after_request": 1519,
+          "ending_queue": 40,
+          "requested_over_potential": 0.5213086526043909,
+          "completed_over_potential": 0.38708566508824793,
+          "abandoned_over_requests": 0.2508670520231214,
+          "mean_quoted_eta_minutes_weighted_by_potential": 27.941994370760316,
+          "gross_rider_fare_revenue_usd_before_costs": 73883.91504834156,
+          "percent_potential_not_completed_by_window_end": 61.291433491175205
+        },
+        {
+          "policy": "reactive",
+          "potential_riders": 11615,
+          "requests": 5810,
+          "completed": 4437,
+          "abandoned_after_request": 1335,
+          "ending_queue": 38,
+          "requested_over_potential": 0.5002152389151958,
+          "completed_over_potential": 0.38200602668962547,
+          "abandoned_over_requests": 0.229776247848537,
+          "mean_quoted_eta_minutes_weighted_by_potential": 26.41507531746827,
+          "gross_rider_fare_revenue_usd_before_costs": 84472.41389848794,
+          "percent_potential_not_completed_by_window_end": 61.799397331037454
+        },
+        {
+          "policy": "anticipatory",
+          "potential_riders": 11615,
+          "requests": 5747,
+          "completed": 4430,
+          "abandoned_after_request": 1279,
+          "ending_queue": 38,
+          "requested_over_potential": 0.49479121825226,
+          "completed_over_potential": 0.38140335772707706,
+          "abandoned_over_requests": 0.22255089611971463,
+          "mean_quoted_eta_minutes_weighted_by_potential": 25.875983367701316,
+          "gross_rider_fare_revenue_usd_before_costs": 88496.55032437117,
+          "percent_potential_not_completed_by_window_end": 61.8596642272923
+        }
+      ]
+    }
+  ]
+}
