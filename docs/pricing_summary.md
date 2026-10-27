@@ -1,0 +1,9 @@
+# Rider pricing and marketplace prediction
+
+Victor H. Aguiar | 26 October 2026
+
+Uber's rider-pricing problem is to allocate scarce, moving capacity without losing affordability or reliability. A price changes whether someone requests now, waits, chooses another product or leaves. Matching and driver acceptance determine pickup time and completion; each trip changes future availability elsewhere. Rider prices and driver earnings are distinct, so a higher rider price is not automatically an equivalent supply incentive. The relevant outcome is completed rides per original quote opportunity, alongside contribution and reliability, not conversion among a selected group of remaining requests.
+
+Uber already forecasts market conditions and operates sophisticated ETA and matching systems. The opportunity is incremental: could a pretrained foundation model improve a state forecast, residual or uncertainty estimate that those systems use? Economics connects the forecast to candidate prices and heterogeneous price-waiting-time trade-offs. It also prevents the mistake of treating an accurate forecast of today's endogenous fare as an estimate of what a different price would cause.
+
+I tested this entry point with public data and existing local infrastructure. Zero-shot Chronos-2 reduced held-out mean fare error by 9.4% versus tuned boosting on six NYC routes. A separate synthetic prototype connects joint arrival/capacity forecasts to price-dependent ETA and completion calculations. Neither establishes better pricing, and a small economic fine-tuning pilot added no material gain. My proposal is a bounded internal comparison against Uber's current prediction stack, followed by shadow evaluation and a constrained marketplace experiment only if the added signal improves decision-relevant outcomes. Marketplace-specific training would need its own test against an unadapted model.

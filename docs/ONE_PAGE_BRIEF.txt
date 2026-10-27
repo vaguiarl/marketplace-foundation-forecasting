@@ -1,19 +1,10 @@
-Foundation models for marketplace prediction
-Victor H. Aguiar | Five-minute research brief
+Rider pricing and marketplace prediction
+Victor H. Aguiar | 26 October 2026
 
-9.4% lower fare MAE than tuned boosting - zero domain training
-Six-route public NYC pilot; not a comparison with Uber's production stack.
+Uber's rider-pricing problem is to allocate scarce, moving capacity without losing affordability or reliability. A price changes whether someone requests now, waits, chooses another product or leaves. Matching and driver acceptance determine pickup time and completion; each trip changes future availability elsewhere. Rider prices and driver earnings are distinct, so a higher rider price is not automatically an equivalent supply incentive. The relevant outcome is completed rides per original quote opportunity, alongside contribution and reliability, not conversion among a selected group of remaining requests.
 
-The opportunity. Foundation forecasts could complement Uber's existing prediction stack; economic structure can connect predictions to decisions. Chronos-2 is a time-series foundation model, extending my broader work on foundation models for structured and tabular data.
+Uber already forecasts market conditions and operates sophisticated ETA and matching systems. The opportunity is incremental: could a pretrained foundation model improve a state forecast, residual or uncertainty estimate that those systems use? Economics connects the forecast to candidate prices and heterogeneous price-waiting-time trade-offs. It also prevents the mistake of treating an accurate forecast of today's endogenous fare as an estimate of what a different price would cause.
 
-What I built. A reproducible local test, reusing my GARP-EFM infrastructure on an Apple M1: processed 62.9 million public NYC trip records and retained roughly 237,000 eligible rides across six short routes. Chronological training/validation preceded a March test of 1,574 common route-hour-horizon cases against six baselines.
-
-The evidence. Zero-shot Chronos-2 with calendar and past trip counts achieved $1.067 MAE versus $1.177 for gradient boosting: 9.4% lower error. This is realized rider-fare forecasting, not upfront quotes, identified surge, or a comparison with Uber's production models. Tail errors and interval calibration still need work. A 60-step synthetic LoRA pilot gave no material gain; validation retained zero-shot.
-
-A research hypothesis. A marketplace-specific synthetic curriculum could improve forecasting of arrivals, availability and disruption dynamics. In a separate toy prototype, joint zero-shot arrival/capacity forecasts were nearly tied with trained boosting. An economic calculator then maps candidate prices to ETA and conversion; its unsafe constraint failures show why shadow evaluation and guardrails come first.
-
-Business case: a scenario, not measured lift. At 20% eligibility, 60% baseline conversion, 10% incremental-volume contribution, $1 million annual program cost and unchanged average fare, a net causal +0.05 percentage-point conversion lift (5 extra completions per 10,000 quotes) implies $1.93 million contribution and $0.93 million net annually. Scale: $115.952 billion, four times Q2 2026 Mobility Gross Bookings, not a forecast. No lift is inferred from the MAE result.
-
-Proposed next step. With internal quotes, nonrequests, availability and ETA data, shadow a prediction service against the current stack. Establish calibration, tail performance and serving reliability jointly with engineering before a constrained experiment. The decision is whether this merits an internal pilot - not whether to replace pricing today.
+I tested this entry point with public data and existing local infrastructure. Zero-shot Chronos-2 reduced held-out mean fare error by 9.4% versus tuned boosting on six NYC routes. A separate synthetic prototype connects joint arrival/capacity forecasts to price-dependent ETA and completion calculations. Neither establishes better pricing, and a small economic fine-tuning pilot added no material gain. My proposal is a bounded internal comparison against Uber's current prediction stack, followed by shadow evaluation and a constrained marketplace experiment only if the added signal improves decision-relevant outcomes. Marketplace-specific training would need its own test against an unadapted model.
 
 https://github.com/vaguiarl/marketplace-foundation-forecasting

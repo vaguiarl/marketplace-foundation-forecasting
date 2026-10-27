@@ -7,7 +7,8 @@ Clone this repository and open the self-contained HTML files locally:
 - `outputs/report.html`: real NYC fare forecasts, including explicit zero-shot traces.
 - `outputs/decision_demo/report.html`: synthetic joint-state forecasts and price-action responses.
 - `outputs/business_value/report.html`: assumption-driven business-value sensitivity.
-- `docs/one_page_brief.pdf`: the five-minute discussion brief.
+- `docs/one_page_brief.pdf`: the half-page context summary.
+- `docs/pricing_narrative.pdf`: the dense narrative memo.
 
 The reports embed their figures. No service, account, cloud job or private data is needed to read them. Alternatively run `python3 -m http.server 8773 --directory outputs` and visit `http://localhost:8773/report.html`.
 
@@ -44,6 +45,8 @@ python3.11 -m venv .venv-training
 The training script refuses to overwrite an already attempted optimization. The training data are synthetic, with coarse dimensional scales calibrated from the real training period only. Real validation chooses among the declared checkpoints; it is not used for gradient updates. A zero-step recommendation must remain available.
 
 ## Audit and extend
+
+The current editorial source is `narrative_content.py`. Install `requirements-docs.txt` in a suitable isolated environment and run `build_narrative.py` to regenerate the half-page summary, narrative PDF and readable Markdown. `build_brief.py` now delegates to that builder. The historical four-page technical appendix remains supporting evidence; its original generator is retained as `build_legacy_package()` and is not run by default.
 
 `audit_results.py`, `independent_review.py`, `audit_simulator.py` and `independent_pressure_review.py` repeat saved-artifact checks. Some shipped provenance paths were normalized for public distribution; the publication manifest records copied source/output hashes separately from original-run hashes. Recomputed raw-file checks require downloading the original TLC files. Recomputed adapter checks require recreating the uncommitted model files. Do not interpret missing large artifacts as an unchanged full audit passing.
 

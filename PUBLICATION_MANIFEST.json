@@ -35,8 +35,8 @@
       "path": "README.md",
       "original_sha256": null,
       "created_for_publication": true,
-      "published_sha256": "d71062e5df3bda1abfecd021055a7ec72e800eaa63979a388609392991d937b5",
-      "bytes": 2868
+      "published_sha256": "3ef9115ea384535eee08526eaea88640fdd6c5720cfa587730707123b3834f25",
+      "bytes": 3135
     },
     {
       "path": "audit_results.py",
@@ -65,8 +65,15 @@
     {
       "path": "build_brief.py",
       "original_sha256": "c4bad9ba44b0e2b972a3c9664bcfd733018af00eef50a77b6685783eb1ee6f5a",
-      "published_sha256": "c4bad9ba44b0e2b972a3c9664bcfd733018af00eef50a77b6685783eb1ee6f5a",
-      "bytes": 19765
+      "published_sha256": "0f46cecfd3469da825693ea7755a844c3a677efee60a6dd260e6421ffb76f057",
+      "bytes": 19895
+    },
+    {
+      "path": "build_narrative.py",
+      "original_sha256": null,
+      "created_for_publication": true,
+      "published_sha256": "4c5a691beedac712db029e91ea537786f36fd507fed306ff5b348e7b4a20559d",
+      "bytes": 6231
     },
     {
       "path": "business_value.py",
@@ -105,10 +112,17 @@
       "bytes": 11312
     },
     {
+      "path": "docs/EDITORIAL_CHECKS.json",
+      "original_sha256": null,
+      "created_for_publication": true,
+      "published_sha256": "cd0adbf16ebf59fbf2fd70069d8f17c38c275430b66f7a94718b4934a26de65d",
+      "bytes": 218
+    },
+    {
       "path": "docs/ONE_PAGE_BRIEF.txt",
       "original_sha256": "0622ebfdfe30b207a953a737189b8d462377a967547b6e6d007d6b047f27f102",
-      "published_sha256": "0622ebfdfe30b207a953a737189b8d462377a967547b6e6d007d6b047f27f102",
-      "bytes": 2547
+      "published_sha256": "522f7ac309c7ad5cc3eacf797f4740eeb069a732ad17355143f4a4b01b15d966",
+      "bytes": 1953
     },
     {
       "path": "docs/TECHNICAL_APPENDIX.rst",
@@ -119,15 +133,36 @@
     {
       "path": "docs/one_page_brief.pdf",
       "original_sha256": "29c35ce1dac0be7430732ff16b9a9fa1f956775a9a7f0576742172bab3439287",
-      "published_sha256": "29c35ce1dac0be7430732ff16b9a9fa1f956775a9a7f0576742172bab3439287",
-      "bytes": 3900
+      "published_sha256": "86d1ada6448b7a428c45bed01ae6a2e77679ab12b4add7f86575de22eb2b833a",
+      "bytes": 3512
+    },
+    {
+      "path": "docs/pricing_narrative.md",
+      "original_sha256": null,
+      "created_for_publication": true,
+      "published_sha256": "be70ec13323caf35fdb5cf8036df1d2bc59e4aad5bca11303cb53a0a4fafed9d",
+      "bytes": 22600
+    },
+    {
+      "path": "docs/pricing_narrative.pdf",
+      "original_sha256": null,
+      "created_for_publication": true,
+      "published_sha256": "99f9f9b5c87ab5db69c14ab90668ce250418790a14888625de265b6d7183977c",
+      "bytes": 22067
+    },
+    {
+      "path": "docs/pricing_summary.md",
+      "original_sha256": null,
+      "created_for_publication": true,
+      "published_sha256": "01beea46b8e5d94c6cb7e1ae7709beeeb5c64cf3b28417257393f3c1955febed",
+      "bytes": 1892
     },
     {
       "path": "docs/reproduce.md",
       "original_sha256": null,
       "created_for_publication": true,
-      "published_sha256": "bf02a849e328dbaa27bdce5b9d9630fa28b6dbeedcffad491c957b379ec51e91",
-      "bytes": 4358
+      "published_sha256": "98aa50420afe73ef3f826a07876f2247d57050165ee391193a2c6cbd669ebb31",
+      "bytes": 4851
     },
     {
       "path": "docs/technical_appendix.md",
@@ -159,6 +194,13 @@
       "original_sha256": "083923dccccdcf6f1d8c62e89f9ef9857883a26205f317b7d2c0d03c7ff4b1ad",
       "published_sha256": "083923dccccdcf6f1d8c62e89f9ef9857883a26205f317b7d2c0d03c7ff4b1ad",
       "bytes": 10107
+    },
+    {
+      "path": "narrative_content.py",
+      "original_sha256": null,
+      "created_for_publication": true,
+      "published_sha256": "cf458e7ed823fa37331e1f52d707180f162fa1ff21532628803fb30c6cafbee9",
+      "bytes": 25532
     },
     {
       "path": "outputs/audit.json",
@@ -487,5 +529,9 @@
   "portability_edits": [
     "pressure_benchmark.py resolves cache from Path.home()",
     "Notebook reproduction instructions use repository root"
-  ]
+  ],
+  "editorial_revision": {
+    "date": "2026-10-26",
+    "scope": "Context-first half-page summary and dense narrative; experimental artifacts unchanged"
+  }
 }

@@ -1,33 +1,25 @@
-# Foundation models for marketplace prediction
+# Rider pricing and marketplace prediction
 
 Victor H. Aguiar
 
-## The five minute case
+## Context summary
 
-**Foundation models for structured data could strengthen a marketplace's prediction layer.** In this public-data pilot, zero-shot Chronos-2 reduced held-out fare error by **9.4% versus tuned gradient boosting**, without domain training. Chronos-2 is a time-series foundation model; my broader work on tabular foundation models and consumer behavior motivates testing a marketplace-specific curriculum next.
+Uber's rider-pricing problem is to allocate scarce, moving capacity without losing affordability or reliability. A price changes whether someone requests now, waits, chooses another product or leaves. Matching and driver acceptance determine pickup time and completion; each trip changes future availability elsewhere. Rider prices and driver earnings are distinct, so a higher rider price is not automatically an equivalent supply incentive. The relevant outcome is completed rides per original quote opportunity, alongside contribution and reliability, not conversion among a selected group of remaining requests.
 
-### Evidence
+Uber already forecasts market conditions and operates sophisticated ETA and matching systems. The opportunity is incremental: could a pretrained foundation model improve a state forecast, residual or uncertainty estimate that those systems use? Economics connects the forecast to candidate prices and heterogeneous price-waiting-time trade-offs. It also prevents the mistake of treating an accurate forecast of today's endogenous fare as an estimate of what a different price would cause.
 
-| NYC hourly median rider fare forecast | Held-out MAE |
-| --- | ---: |
-| Zero-shot Chronos-2 with calendar and past trip counts | $1.067 |
-| Tuned gradient boosting | $1.177 |
-| Four-week seasonal, selected on validation | $1.311 |
+I tested this entry point with public data and existing local infrastructure. Zero-shot Chronos-2 reduced held-out mean fare error by 9.4% versus tuned boosting on six NYC routes. A separate synthetic prototype connects joint arrival/capacity forecasts to price-dependent ETA and completion calculations. Neither establishes better pricing, and a small economic fine-tuning pilot added no material gain. My proposal is a bounded internal comparison against Uber's current prediction stack, followed by shadow evaluation and a constrained marketplace experiment only if the added signal improves decision-relevant outcomes. Marketplace-specific training would need its own test against an unadapted model.
 
-The comparison uses 1,574 matched cases on six short Brooklyn/Queens routes in March 2026. It does not compare against Uber's production models. A small synthetic LoRA pilot added no meaningful improvement, and validation retained the original model. Marketplace curriculum is a research hypothesis, not an established gain.
+## Read the argument and evidence
 
-### Opportunity
+[Half-page summary](docs/one_page_brief.pdf) · [Narrative memo](docs/pricing_narrative.pdf) · [Readable narrative](docs/pricing_narrative.md) · [Technical appendix](docs/technical_appendix.md) · [PDF appendix](docs/technical_appendix.pdf)
 
-Forecast arrivals and available capacity, then use economic structure to evaluate candidate rider prices through ETA and conversion. A separate synthetic prototype makes this decision interface explicit. Its zero-shot state forecasts roughly match a domain-trained tree model, but its action failures preclude deployment claims.
+The narrative explains the pricing context before the prediction opportunity, then covers the public-data experiment, economic simulation, failed adaptation result, business sensitivities and the proposed science-engineering test. It distinguishes official public information from our economic analysis and proposed design.
 
-Small causal improvements could still matter at scale. Under explicit assumptions, **five additional completions per 10,000 eligible quotes** correspond to about **$1.9m annual incremental contribution**, or **$0.9m after a $1m program cost**. This is a sensitivity scenario, not a measured business effect. It assumes 20% eligibility, 60% baseline conversion, 10% incremental-volume contribution, unchanged gross fares, and four times Q2 2026 Mobility Gross Bookings as a scale anchor.
+## Run and modify
 
-### How and what next
+[Reproduction guide](docs/reproduce.md) · [Notebook](demo.ipynb) · [Economic design](ECONOMIC_DESIGN.rst)
 
-I reused my GARP-EFM infrastructure locally, processed 62.9m public TLC rows, selected routes using January only, tuned on February, and held out March. The pipeline includes six baselines, availability delays, pinned weights, and repeatable independent audits.
-
-The next step is an internal replay against the current stack, followed by a cached shadow forecast with engineering-owned data contracts and shared rollout gates. Quote/rejection logs, available supply, and ETA observations are needed before testing pricing value. High-fare misses and under-calibrated intervals remain important limitations.
-
-[One-page briefing](docs/one_page_brief.pdf) · [Technical appendix](docs/technical_appendix.md) · [PDF appendix](docs/technical_appendix.pdf) · [Run and modify](docs/reproduce.md) · [Notebook](demo.ipynb)
+Cached HTML reports under `outputs/` work offline. The repository contains the aggregated public panel, synthetic corpora, strong baselines, pinned-model instructions and repeatable audits. It excludes raw trip files, model weights and private data. `narrative_content.py` is the editorial source; `build_narrative.py` rebuilds the current summary and memo without rerunning experiments.
 
 Independent demonstration. No affiliation, endorsement, proprietary Uber data, or production pricing claim is implied.

@@ -1,4 +1,4 @@
-"""Build the concise discussion brief and a transparent technical appendix.
+"""Compatibility entry point for the current context-first narrative package.
 
 Read-only with respect to the experiments: reads cached JSON/figures only.
 Run with the bundled ReportLab/pypdf runtime. No models, downloads or training.
@@ -70,7 +70,7 @@ BRIEF = [
 ]
 
 
-def build():
+def build_legacy_package():
     OUT.mkdir(parents=True, exist_ok=True)
     m = json.loads((ROOT / "outputs/metrics.json").read_text())
     pm = json.loads((ROOT / "outputs/decision_demo/metrics.json").read_text())
@@ -150,6 +150,11 @@ def build():
     (OUT / "TECHNICAL_APPENDIX.rst").write_text(appendix_text+"\n")
     print(json.dumps({"brief_pages": 1, "brief_words": len(brief_text.split()), "appendix_pages": appendix_pages,
                       "outputs": [str(OUT / "one_page_brief.pdf"), str(OUT / "technical_appendix.pdf")]}, indent=2))
+
+
+def build():
+    from build_narrative import build as build_current_package
+    return build_current_package()
 
 
 if __name__ == "__main__":
